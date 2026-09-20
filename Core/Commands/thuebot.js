@@ -20,9 +20,9 @@ const PENDING_PAYMENT_TTL_MS = 30 * 60_000; // 30 phút
 const PRICE_PER_DAY = 1000;
 
 // Thông tin ngân hàng nhận thanh toán
-const BANK_BIN = "970422"; // MB Bank
-const BANK_ACCOUNT_NO = "00986914147";
-const BANK_ACCOUNT_NAME = "NGO NGUYEN MINH TRI";
+const BANK_BIN = "970407"; // MB Bank
+const BANK_ACCOUNT_NO = "2349686899";
+const BANK_ACCOUNT_NAME = "NGUYEN QUANG HAI";
 
 function getSetting(
   db,
@@ -333,7 +333,7 @@ async function checkRentalReminder({
         threadId,
         "⛔ THỜI HẠN THUÊ BOT ĐÃ KẾT THÚC\n" +
           `⏰ Hết hạn lúc: ${formatDateTime(expireMs)}\n` +
-          "💳 Admin dùng !thanhtoan thuebot để gia hạn.",
+          "💳 Admin dùng .thanhtoan thuebot để gia hạn.",
       );
 
       setSetting(
@@ -362,7 +362,7 @@ async function checkRentalReminder({
         "⚠️ BOT SẮP HẾT HẠN\n" +
           `⏳ Còn lại: ${formatRemaining(expireMs)}\n` +
           `⏰ Hết hạn: ${formatDateTime(expireMs)}\n` +
-          "💳 Admin dùng !thanhtoan thuebot để gia hạn.",
+          "💳 Admin dùng .thanhtoan thuebot để gia hạn.",
       );
 
       setSetting(
@@ -391,7 +391,7 @@ async function checkRentalReminder({
         "🔔 NHẮC GIA HẠN BOT\n" +
           `⏳ Còn lại: ${formatRemaining(expireMs)}\n` +
           `⏰ Hết hạn: ${formatDateTime(expireMs)}\n` +
-          "💳 Admin dùng !thanhtoan thuebot để gia hạn.",
+          "💳 Admin dùng .thanhtoan thuebot để gia hạn.",
       );
 
       setSetting(
@@ -472,7 +472,7 @@ export default {
   name: "thuebot",
   description: "Quản lý thời hạn sử dụng bot của nhóm",
   version: "4.0.0",
-  author: "NKNP V3",
+  author: "PTF",
   group: "moderation",
   role: 0,
   cooldown: 2,
@@ -529,7 +529,7 @@ export default {
           "🤖 THÔNG TIN THUÊ BOT\n" +
             "• Trạng thái: CHƯA KÍCH HOẠT\n" +
             `• Giá: ${formatMoney(PRICE_PER_DAY)} / ngày\n` +
-            "• Thanh toán: !thuebot pay <số ngày>",
+            "• Thanh toán: .thuebot pay <số ngày>",
         );
 
         return;
@@ -543,7 +543,7 @@ export default {
             "• Trạng thái: ĐÃ HẾT HẠN\n" +
             `• Hết hạn lúc: ${formatDateTime(expireMs)}\n` +
             `• Giá: ${formatMoney(PRICE_PER_DAY)} / ngày\n` +
-            "• Thanh toán: !thuebot pay <số ngày>",
+            "• Thanh toán: .thuebot pay <số ngày>",
         );
 
         return;
@@ -679,7 +679,7 @@ export default {
         adapter,
         threadId,
         senderRole >= 1
-          ? "Chỉ owner bot được thay đổi thời hạn. Dùng !thuebot pay <số ngày> để lấy QR gia hạn."
+          ? "Chỉ owner bot được thay đổi thời hạn. Dùng .thuebot pay <số ngày> để lấy QR gia hạn."
           : "Bạn không có quyền sử dụng thao tác này.",
       );
 
@@ -903,7 +903,7 @@ export default {
       adapter,
       threadId,
       "⚠️ Nhóm chưa thuê bot hoặc đã hết hạn.\n" +
-        `💳 Dùng !thuebot pay <số ngày> để lấy QR gia hạn (${formatMoney(PRICE_PER_DAY)}/ngày).`,
+        `💳 Dùng .thuebot pay <số ngày> để lấy QR gia hạn (${formatMoney(PRICE_PER_DAY)}/ngày).`,
     );
   },
 };
