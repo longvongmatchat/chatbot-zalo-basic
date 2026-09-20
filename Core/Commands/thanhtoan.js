@@ -5,9 +5,9 @@ import { randomUUID } from "node:crypto";
 
 import { resolveSenderRole } from "../CommandRouter.js";
 
-const BANK_ID = process.env.RENTAL_BANK_ID || "MB";
-const BANK_NUMBER = process.env.RENTAL_BANK_NUMBER || "00986914147";
-const ACCOUNT_HOLDER = process.env.RENTAL_ACCOUNT_HOLDER || "NGO NGUYEN MINH TRI";
+const BANK_ID = process.env.RENTAL_BANK_ID || "TCB";
+const BANK_NUMBER = process.env.RENTAL_BANK_NUMBER || "2349686899";
+const ACCOUNT_HOLDER = process.env.RENTAL_ACCOUNT_HOLDER || "NGUYEN QUANG HAI";
 const PAYMENT_API_URL = process.env.PAYMENT_API_URL;
 const DAYS_TO_ADD = Number(process.env.RENTAL_DAYS_PER_PAYMENT || 30);
 const CHECK_INTERVAL_MS = 15_000;
@@ -214,7 +214,7 @@ export default {
   name: "thanhtoan",
   description: "Thanh toán thuê bot qua VietQR và tự động cộng ngày",
   version: "2.2.0",
-  author: "NKNP V3",
+  author: "PTF",
   group: "moderation",
   role: 0,
   cooldown: 10,
